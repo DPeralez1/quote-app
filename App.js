@@ -3,7 +3,13 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Quote from "./tabs/Quote.js";
 import HomeScreen from "./tabs/HomeScreen.js";
 import SettingsScreen from "./tabs/SettingsScreen.js";
-import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  StatusBar,
+} from "react-native";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 
 const Tab = createBottomTabNavigator();
@@ -83,6 +89,41 @@ export default function App() {
             New Quote
           </Text>
         </TouchableOpacity>
+        <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
+          <TouchableOpacity
+            onPress={() => {}}
+            style={{
+              borderWidth: 2,
+              borderColor: "#155E75",
+              borderRadius: 50,
+              padding: 15,
+            }}
+          >
+            <FontAwesome5 name="volume-up" size={22} color="#155E75" />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {}}
+            style={{
+              borderWidth: 2,
+              borderColor: "#155E75",
+              borderRadius: 50,
+              padding: 15,
+            }}
+          >
+            <FontAwesome5 name="copy" size={22} color="#155E75" />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {}}
+            style={{
+              borderWidth: 2,
+              borderColor: "#155E75",
+              borderRadius: 50,
+              padding: 15,
+            }}
+          >
+            <FontAwesome5 name="twitter" size={22} color="#155E75" />
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
