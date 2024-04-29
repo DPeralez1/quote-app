@@ -25,6 +25,7 @@ export default function App() {
           padding: 20,
         }}
       >
+        <StatusBar barStyle="light-content" />
         <Text
           style={{
             textAlign: "center",
