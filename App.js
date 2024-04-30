@@ -98,8 +98,8 @@ export default function App() {
           onPress={randomQuote}
           style={{
             backgroundColor: loading
-              ? "rgba (21, 94, 117, 0.7)"
-              : "rgba (21, 94, 117, 1)",
+              ? "rgba(21, 94, 117, 0.7)"
+              : "rgba(21, 94, 117, 1)",
             padding: 20,
             borderRadius: 30,
             marginVertical: 20,
