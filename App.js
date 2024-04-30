@@ -1,8 +1,5 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Quote from "./tabs/Quote.js";
-import HomeScreen from "./tabs/HomeScreen.js";
-import SettingsScreen from "./tabs/SettingsScreen.js";
 import {
   Text,
   View,
@@ -11,10 +8,27 @@ import {
   StatusBar,
 } from "react-native";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
+import { useEffect, useState } from "react";
 
 const Tab = createBottomTabNavigator();
 
 export default function App() {
+  const [character, setCharacter] = useState();
+  const [quote, setQuote] = useState();
+
+  const randomQuote = () => {
+    fetch("https://animechan.xyz/api/random/character?name=vegeta")
+      .then((response) => response.json())
+      .then((result) => {
+        setQuote(result.quote);
+        setCharacter(result.character);
+      });
+  };
+
+  useEffect(() => {
+    randomQuote(); // Trigger random quote when component mounts
+  }, []);
+
   return (
     <View className="flex-1 justify-center items-center bg-cyan-800">
       <View
@@ -54,7 +68,7 @@ export default function App() {
             paddingHorizontal: 30,
           }}
         >
-          Does a machine like yourself ever experience fear?
+          {quote}
         </Text>
         <FontAwesome5
           name="quote-right"
@@ -75,7 +89,7 @@ export default function App() {
             color: "#000",
           }}
         >
-          -- Character
+          -- {character}
         </Text>
         <TouchableOpacity
           onPress={() => {}}
@@ -92,7 +106,7 @@ export default function App() {
         </TouchableOpacity>
         <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
           <TouchableOpacity
-            onPress={() => {}}
+            onPress={randomQuote}
             style={{
               borderWidth: 2,
               borderColor: "#155E75",
