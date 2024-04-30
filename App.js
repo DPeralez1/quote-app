@@ -15,13 +15,16 @@ const Tab = createBottomTabNavigator();
 export default function App() {
   const [character, setCharacter] = useState("Loading...");
   const [quote, setQuote] = useState("Loading...");
+  const [loading, setLoading] = useState(false);
 
   const randomQuote = () => {
+    setLoading(true);
     fetch("https://animechan.xyz/api/random/character?name=vegeta")
       .then((response) => response.json())
       .then((result) => {
         setQuote(result.quote);
         setCharacter(result.character);
+        setLoading(false);
       });
   };
 
@@ -94,14 +97,16 @@ export default function App() {
         <TouchableOpacity
           onPress={randomQuote}
           style={{
-            backgroundColor: "#155E75",
+            backgroundColor: loading
+              ? "rgba (21, 94, 117, 0.7)"
+              : "rgba (21, 94, 117, 1)",
             padding: 20,
             borderRadius: 30,
             marginVertical: 20,
           }}
         >
           <Text style={{ color: "#fff", fontSize: 18, textAlign: "center" }}>
-            New Quote
+            {loading ? "Loading..." : "New Quote"}
           </Text>
         </TouchableOpacity>
         <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
