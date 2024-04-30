@@ -9,6 +9,8 @@ import {
 } from "react-native";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import { useEffect, useState } from "react";
+import Clipboard from "@react-native-clipboard/clipboard";
+import Snackbar from "react-native-snackbar";
 
 const Tab = createBottomTabNavigator();
 
@@ -31,6 +33,14 @@ export default function App() {
   useEffect(() => {
     randomQuote(); // Trigger random quote when component mounts
   }, []);
+
+  const copyToClipboard = () => {
+    Clipboard.setString(Quote);
+    Snackbar.show({
+      text: "Quote copied!",
+      duration: Snackbar.LENGTH_SHORT,
+    });
+  };
 
   return (
     <View className="flex-1 justify-center items-center bg-cyan-800">
@@ -133,7 +143,7 @@ export default function App() {
             <FontAwesome5 name="copy" size={22} color="#155E75" />
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => {}}
+            onPress={copyToClipboard}
             style={{
               borderWidth: 2,
               borderColor: "#155E75",
