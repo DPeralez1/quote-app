@@ -6,6 +6,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   StatusBar,
+  Linking,
 } from "react-native";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import { useEffect, useState } from "react";
@@ -35,11 +36,16 @@ export default function App() {
   }, []);
 
   const copyToClipboard = () => {
-    Clipboard.setString(Quote);
+    Clipboard.setString(quote);
     Snackbar.show({
       text: "Quote copied!",
       duration: Snackbar.LENGTH_SHORT,
     });
+  };
+
+  const tweetNow = () => {
+    const url = "https://twitter.com/intent/tweet?text=" + quote;
+    Linking.openURL(url);
   };
 
   return (
@@ -132,7 +138,7 @@ export default function App() {
             <FontAwesome5 name="volume-up" size={22} color="#155E75" />
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => {}}
+            onPress={copyToClipboard}
             style={{
               borderWidth: 2,
               borderColor: "#155E75",
@@ -143,7 +149,7 @@ export default function App() {
             <FontAwesome5 name="copy" size={22} color="#155E75" />
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={copyToClipboard}
+            onPress={tweetNow}
             style={{
               borderWidth: 2,
               borderColor: "#155E75",
