@@ -13,8 +13,8 @@ import { useEffect, useState } from "react";
 const Tab = createBottomTabNavigator();
 
 export default function App() {
-  const [character, setCharacter] = useState();
-  const [quote, setQuote] = useState();
+  const [character, setCharacter] = useState("Loading...");
+  const [quote, setQuote] = useState("Loading...");
 
   const randomQuote = () => {
     fetch("https://animechan.xyz/api/random/character?name=vegeta")
@@ -49,7 +49,7 @@ export default function App() {
             marginBottom: 20,
           }}
         >
-          Quote of the day!
+          Prince of all Saiyans!
         </Text>
         <FontAwesome5
           name="quote-left"
@@ -92,7 +92,7 @@ export default function App() {
           -- {character}
         </Text>
         <TouchableOpacity
-          onPress={() => {}}
+          onPress={randomQuote}
           style={{
             backgroundColor: "#155E75",
             padding: 20,
@@ -106,7 +106,7 @@ export default function App() {
         </TouchableOpacity>
         <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
           <TouchableOpacity
-            onPress={randomQuote}
+            onPress={() => {}}
             style={{
               borderWidth: 2,
               borderColor: "#155E75",
