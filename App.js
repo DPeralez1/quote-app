@@ -126,37 +126,13 @@ export default function App() {
           </Text>
         </TouchableOpacity>
         <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
-          <TouchableOpacity
-            onPress={() => {}}
-            style={{
-              borderWidth: 2,
-              borderColor: "#155E75",
-              borderRadius: 50,
-              padding: 15,
-            }}
-          >
+          <TouchableOpacity onPress={() => {}} style={styles.icons}>
             <FontAwesome5 name="volume-up" size={22} color="#155E75" />
           </TouchableOpacity>
-          <TouchableOpacity
-            onPress={copyToClipboard}
-            style={{
-              borderWidth: 2,
-              borderColor: "#155E75",
-              borderRadius: 50,
-              padding: 15,
-            }}
-          >
+          <TouchableOpacity onPress={copyToClipboard} style={styles.icons}>
             <FontAwesome5 name="copy" size={22} color="#155E75" />
           </TouchableOpacity>
-          <TouchableOpacity
-            onPress={tweetNow}
-            style={{
-              borderWidth: 2,
-              borderColor: "#155E75",
-              borderRadius: 50,
-              padding: 15,
-            }}
-          >
+          <TouchableOpacity onPress={tweetNow} style={styles.icons}>
             <FontAwesome5 name="twitter" size={22} color="#155E75" />
           </TouchableOpacity>
         </View>
@@ -172,3 +148,12 @@ export default function App() {
   //   </NavigationContainer>
   // );
 }
+
+const styles = StyleSheet.create({
+  icons: {
+    borderWidth: 2,
+    borderColor: "#155E75",
+    borderRadius: 50,
+    padding: 15,
+  },
+});
