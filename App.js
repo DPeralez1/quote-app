@@ -10,6 +10,9 @@ import {
 } from "react-native";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import { useEffect, useState } from "react";
+import Vegeta from "./tabs/Vegeta";
+import Home from "./tabs/Home";
+import Goku from "./tabs/Goku";
 
 const Tab = createBottomTabNavigator();
 
@@ -47,55 +50,13 @@ export default function App() {
   // };
 
   return (
-    <View className="flex-1 justify-center items-center bg-cyan-800">
-      <View style={styles.container}>
-        <StatusBar barStyle="light-content" />
-        <Text style={styles.title}>Prince of all Saiyans!</Text>
-        <FontAwesome5
-          name="quote-left"
-          style={{ fontSize: 20, marginBottom: -12 }}
-          color="#000"
-        />
-        <Text style={styles.quote}>{quote}</Text>
-        <FontAwesome5
-          name="quote-right"
-          style={{
-            fontSize: 20,
-            textAlign: "right",
-            marginTop: -20,
-            marginBottom: 20,
-          }}
-          color="#000"
-        />
-        <Text style={styles.character}>-- {character}</Text>
-        <TouchableOpacity
-          onPress={randomQuote}
-          style={{
-            backgroundColor: loading
-              ? "rgba(21, 94, 117, 0.7)"
-              : "rgba(21, 94, 117, 1)",
-            padding: 20,
-            borderRadius: 30,
-            marginVertical: 20,
-          }}
-        >
-          <Text style={{ color: "#fff", fontSize: 18, textAlign: "center" }}>
-            {loading ? "Loading..." : "New Quote"}
-          </Text>
-        </TouchableOpacity>
-        <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
-          <TouchableOpacity onPress={() => {}} style={styles.icons}>
-            <FontAwesome5 name="volume-up" size={22} color="#155E75" />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => {}} style={styles.icons}>
-            <FontAwesome5 name="copy" size={22} color="#155E75" />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => {}} style={styles.icons}>
-            <FontAwesome5 name="twitter" size={22} color="#155E75" />
-          </TouchableOpacity>
-        </View>
-      </View>
-    </View>
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen name="Home" component={Home} />
+        <Tab.Screen name="Vegeta" component={Vegeta} />
+        <Tab.Screen name="Goku" component={Goku} />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
 
