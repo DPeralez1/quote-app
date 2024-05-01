@@ -10,8 +10,6 @@ import {
 } from "react-native";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import { useEffect, useState } from "react";
-import Clipboard from "@react-native-clipboard/clipboard";
-import Snackbar from "react-native-snackbar";
 
 const Tab = createBottomTabNavigator();
 
@@ -35,60 +33,30 @@ export default function App() {
     randomQuote(); // Trigger random quote when component mounts
   }, []);
 
-  const copyToClipboard = () => {
-    Clipboard.setString(quote);
-    Snackbar.show({
-      text: "Quote copied!",
-      duration: Snackbar.LENGTH_SHORT,
-    });
-  };
+  // const copyToClipboard = () => {
+  //   Clipboard.setString(quote);
+  //   Snackbar.show({
+  //     text: "Quote copied!",
+  //     duration: Snackbar.LENGTH_SHORT,
+  //   });
+  // };
 
-  const tweetNow = () => {
-    const url = "https://twitter.com/intent/tweet?text=" + quote;
-    Linking.openURL(url);
-  };
+  // const tweetNow = () => {
+  //   const url = "https://twitter.com/intent/tweet?text=" + quote;
+  //   Linking.openURL(url);
+  // };
 
   return (
     <View className="flex-1 justify-center items-center bg-cyan-800">
-      <View
-        style={{
-          width: "90%",
-          backgroundColor: "#fff",
-          borderRadius: 20,
-          padding: 20,
-        }}
-      >
+      <View style={styles.container}>
         <StatusBar barStyle="light-content" />
-        <Text
-          style={{
-            textAlign: "center",
-            fontSize: 26,
-            fontWeight: "600",
-            color: "#333",
-            marginBottom: 20,
-          }}
-        >
-          Prince of all Saiyans!
-        </Text>
+        <Text style={styles.title}>Prince of all Saiyans!</Text>
         <FontAwesome5
           name="quote-left"
           style={{ fontSize: 20, marginBottom: -12 }}
           color="#000"
         />
-        <Text
-          style={{
-            color: "#000",
-            fontSize: 16,
-            lineHeight: 26,
-            letterSpacing: 0.5,
-            fontWeight: "400",
-            textAlign: "center",
-            marginBottom: 10,
-            paddingHorizontal: 30,
-          }}
-        >
-          {quote}
-        </Text>
+        <Text style={styles.quote}>{quote}</Text>
         <FontAwesome5
           name="quote-right"
           style={{
@@ -99,17 +67,7 @@ export default function App() {
           }}
           color="#000"
         />
-        <Text
-          style={{
-            textAlign: "right",
-            fontWeight: "300",
-            fontStyle: "italic",
-            fontSize: 16,
-            color: "#000",
-          }}
-        >
-          -- {character}
-        </Text>
+        <Text style={styles.character}>-- {character}</Text>
         <TouchableOpacity
           onPress={randomQuote}
           style={{
@@ -129,24 +87,16 @@ export default function App() {
           <TouchableOpacity onPress={() => {}} style={styles.icons}>
             <FontAwesome5 name="volume-up" size={22} color="#155E75" />
           </TouchableOpacity>
-          <TouchableOpacity onPress={copyToClipboard} style={styles.icons}>
+          <TouchableOpacity onPress={() => {}} style={styles.icons}>
             <FontAwesome5 name="copy" size={22} color="#155E75" />
           </TouchableOpacity>
-          <TouchableOpacity onPress={tweetNow} style={styles.icons}>
+          <TouchableOpacity onPress={() => {}} style={styles.icons}>
             <FontAwesome5 name="twitter" size={22} color="#155E75" />
           </TouchableOpacity>
         </View>
       </View>
     </View>
   );
-  //   <NavigationContainer>
-  //     <Tab.Navigator>
-  //       <Tab.Screen name="Home" component={HomeScreen} />
-  //       <Tab.Screen name="Settings" component={SettingsScreen} />
-  //       <Tab.Screen name="Quote" component={Quote} />
-  //     </Tab.Navigator>
-  //   </NavigationContainer>
-  // );
 }
 
 const styles = StyleSheet.create({
@@ -156,4 +106,43 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     padding: 15,
   },
+  container: {
+    width: "90%",
+    backgroundColor: "#fff",
+    borderRadius: 20,
+    padding: 20,
+  },
+  title: {
+    textAlign: "center",
+    fontSize: 26,
+    fontWeight: "600",
+    color: "#333",
+    marginBottom: 20,
+  },
+  quote: {
+    color: "#000",
+    fontSize: 16,
+    lineHeight: 26,
+    letterSpacing: 0.5,
+    fontWeight: "400",
+    textAlign: "center",
+    marginBottom: 10,
+    paddingHorizontal: 30,
+  },
+  character: {
+    textAlign: "right",
+    fontWeight: "300",
+    fontStyle: "italic",
+    fontSize: 16,
+    color: "#000",
+  },
 });
+
+//   <NavigationContainer>
+//     <Tab.Navigator>
+//       <Tab.Screen name="Home" component={HomeScreen} />
+//       <Tab.Screen name="Settings" component={SettingsScreen} />
+//       <Tab.Screen name="Quote" component={Quote} />
+//     </Tab.Navigator>
+//   </NavigationContainer>
+// );
