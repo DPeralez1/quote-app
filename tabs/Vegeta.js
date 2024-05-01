@@ -1,12 +1,9 @@
-import { NavigationContainer } from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {
   Text,
   View,
   StyleSheet,
   TouchableOpacity,
   StatusBar,
-  Linking,
 } from "react-native";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import { useEffect, useState } from "react";
@@ -45,7 +42,7 @@ export default function Vegeta() {
   // };
 
   return (
-    <View className="flex-1 justify-center items-center bg-cyan-800">
+    <View className="flex-1 justify-center items-center #cbd5e1">
       <View style={styles.container}>
         <StatusBar barStyle="light-content" />
         <Text style={styles.title}>Prince of all Saiyans!</Text>
@@ -107,7 +104,9 @@ const styles = StyleSheet.create({
   container: {
     width: "90%",
     backgroundColor: "#fff",
-    borderRadius: 20,
+    borderColor: "#030712",
+    borderWidth: 2,
+    borderRadius: 0,
     padding: 20,
   },
   title: {

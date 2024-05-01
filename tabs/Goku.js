@@ -1,12 +1,9 @@
-import { NavigationContainer } from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {
   Text,
   View,
   StyleSheet,
   TouchableOpacity,
   StatusBar,
-  Linking,
 } from "react-native";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import { useEffect, useState } from "react";
@@ -45,7 +42,7 @@ export default function Goku() {
   // };
 
   return (
-    <View className="flex-1 justify-center items-center bg-cyan-800">
+    <View className="flex-1 justify-center items-center #cbd5e1">
       <View style={styles.container}>
         <StatusBar barStyle="light-content" />
         <Text style={styles.title}>Earths Mightiest</Text>

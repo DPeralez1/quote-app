@@ -1,15 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import {
-  Text,
-  View,
-  StyleSheet,
-  TouchableOpacity,
-  StatusBar,
-  Linking,
-} from "react-native";
-import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
-import { useEffect, useState } from "react";
+import { StyleSheet } from "react-native";
+
 import Vegeta from "./tabs/Vegeta";
 import Home from "./tabs/Home";
 import Goku from "./tabs/Goku";
@@ -17,38 +9,6 @@ import Goku from "./tabs/Goku";
 const Tab = createBottomTabNavigator();
 
 export default function App() {
-  const [character, setCharacter] = useState("Loading...");
-  const [quote, setQuote] = useState("Loading...");
-  const [loading, setLoading] = useState(false);
-
-  const randomQuote = () => {
-    setLoading(true);
-    fetch("https://animechan.xyz/api/random/character?name=vegeta")
-      .then((response) => response.json())
-      .then((result) => {
-        setQuote(result.quote);
-        setCharacter(result.character);
-        setLoading(false);
-      });
-  };
-
-  useEffect(() => {
-    randomQuote(); // Trigger random quote when component mounts
-  }, []);
-
-  // const copyToClipboard = () => {
-  //   Clipboard.setString(quote);
-  //   Snackbar.show({
-  //     text: "Quote copied!",
-  //     duration: Snackbar.LENGTH_SHORT,
-  //   });
-  // };
-
-  // const tweetNow = () => {
-  //   const url = "https://twitter.com/intent/tweet?text=" + quote;
-  //   Linking.openURL(url);
-  // };
-
   return (
     <NavigationContainer>
       <Tab.Navigator>
@@ -59,6 +19,19 @@ export default function App() {
     </NavigationContainer>
   );
 }
+
+// const copyToClipboard = () => {
+//   Clipboard.setString(quote);
+//   Snackbar.show({
+//     text: "Quote copied!",
+//     duration: Snackbar.LENGTH_SHORT,
+//   });
+// };
+
+// const tweetNow = () => {
+//   const url = "https://twitter.com/intent/tweet?text=" + quote;
+//   Linking.openURL(url);
+// };
 
 const styles = StyleSheet.create({
   icons: {
