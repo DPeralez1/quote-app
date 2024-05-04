@@ -4,6 +4,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   StatusBar,
+  Share,
 } from "react-native";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import { useEffect, useState } from "react";
@@ -27,6 +28,13 @@ export default function Goku() {
   useEffect(() => {
     randomQuote(); // Trigger random quote when component mounts
   }, []);
+
+  const shareQuote = (quote, character) => {
+    Share.share({
+      quote,
+      message: `"${quote}" --${character}`,
+    });
+  };
 
   // const copyToClipboard = () => {
   //   Clipboard.setString(quote);
@@ -85,8 +93,11 @@ export default function Goku() {
           <TouchableOpacity onPress={() => {}} style={styles.icons}>
             <FontAwesome5 name="copy" size={22} color="#155E75" />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => {}} style={styles.icons}>
-            <FontAwesome5 name="twitter" size={22} color="#155E75" />
+          <TouchableOpacity
+            onPress={() => shareQuote(quote, character)}
+            style={styles.icons}
+          >
+            <FontAwesome5 name="share" size={22} color="#155E75" />
           </TouchableOpacity>
         </View>
       </View>

@@ -4,9 +4,11 @@ import {
   StyleSheet,
   TouchableOpacity,
   StatusBar,
+  Share,
 } from "react-native";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import { useEffect, useState } from "react";
+import * as Speech from "expo-speech";
 
 export default function Vegeta() {
   const [character, setCharacter] = useState("Loading...");
@@ -28,18 +30,16 @@ export default function Vegeta() {
     randomQuote(); // Trigger random quote when component mounts
   }, []);
 
-  // const copyToClipboard = () => {
-  //   Clipboard.setString(quote);
-  //   Snackbar.show({
-  //     text: "Quote copied!",
-  //     duration: Snackbar.LENGTH_SHORT,
-  //   });
+  // const speak = () => {
+  //   Speech.speak(quote);
   // };
 
-  // const tweetNow = () => {
-  //   const url = "https://twitter.com/intent/tweet?text=" + quote;
-  //   Linking.openURL(url);
-  // };
+  const shareQuote = (quote, character) => {
+    Share.share({
+      quote,
+      message: `"${quote}" --${character}`,
+    });
+  };
 
   return (
     <View className="flex-1 justify-center items-center #cbd5e1">
@@ -85,8 +85,11 @@ export default function Vegeta() {
           <TouchableOpacity onPress={() => {}} style={styles.icons}>
             <FontAwesome5 name="copy" size={22} color="#155E75" />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => {}} style={styles.icons}>
-            <FontAwesome5 name="twitter" size={22} color="#155E75" />
+          <TouchableOpacity
+            onPress={() => shareQuote(quote, character)}
+            style={styles.icons}
+          >
+            <FontAwesome5 name="share" size={22} color="#155E75" />
           </TouchableOpacity>
         </View>
       </View>

@@ -17,11 +17,13 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.anonymous.AwesomeProject"
+      
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
+        
       }
     },
     "web": {
