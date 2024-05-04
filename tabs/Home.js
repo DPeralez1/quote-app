@@ -1,16 +1,6 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import {
-  Text,
-  View,
-  StyleSheet,
-  TouchableOpacity,
-  StatusBar,
-  Linking,
-  Image,
-} from "react-native";
-import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
-import { useEffect, useState } from "react";
+import { Text, View, StyleSheet, Image } from "react-native";
 
 export default function Home() {
   return (

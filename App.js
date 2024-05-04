@@ -1,7 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { StyleSheet } from "react-native";
-
+import React from "react";
 import Vegeta from "./tabs/Vegeta";
 import Home from "./tabs/Home";
 import Goku from "./tabs/Goku";

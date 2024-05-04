@@ -115,7 +115,9 @@ const styles = StyleSheet.create({
   container: {
     width: "90%",
     backgroundColor: "#fff",
-    borderRadius: 20,
+    borderColor: "#030712",
+    borderWidth: 2,
+    borderRadius: 0,
     padding: 20,
   },
   title: {

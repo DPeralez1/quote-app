@@ -9,6 +9,7 @@ import {
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import { useEffect, useState } from "react";
 import * as Speech from "expo-speech";
+import React from "react";
 
 export default function Vegeta() {
   const [character, setCharacter] = useState("Loading...");
