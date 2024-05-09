@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import { useEffect, useState } from "react";
+import Buttons from "../components/Buttons";
 
 export default function Goku() {
   const [character, setCharacter] = useState("Loading...");
@@ -28,14 +29,6 @@ export default function Goku() {
   useEffect(() => {
     randomQuote(); // Trigger random quote when component mounts
   }, []);
-
-  const shareQuote = (quote, character) => {
-    Share.share({
-      quote,
-      message: `"${quote}" --${character}`,
-    });
-  };
-
   // const copyToClipboard = () => {
   //   Clipboard.setString(quote);
   //   Snackbar.show({
@@ -86,32 +79,13 @@ export default function Goku() {
             {loading ? "Loading..." : "New Quote"}
           </Text>
         </TouchableOpacity>
-        <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
-          <TouchableOpacity onPress={() => {}} style={styles.icons}>
-            <FontAwesome5 name="volume-up" size={22} color="#155E75" />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => {}} style={styles.icons}>
-            <FontAwesome5 name="copy" size={22} color="#155E75" />
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => shareQuote(quote, character)}
-            style={styles.icons}
-          >
-            <FontAwesome5 name="share" size={22} color="#155E75" />
-          </TouchableOpacity>
-        </View>
+        <Buttons />
       </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  icons: {
-    borderWidth: 2,
-    borderColor: "#155E75",
-    borderRadius: 50,
-    padding: 15,
-  },
   container: {
     width: "90%",
     backgroundColor: "#fff",

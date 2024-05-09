@@ -4,12 +4,12 @@ import {
   StyleSheet,
   TouchableOpacity,
   StatusBar,
-  Share,
 } from "react-native";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import { useEffect, useState } from "react";
 import * as Speech from "expo-speech";
 import React from "react";
+import Buttons from "../components/Buttons";
 
 export default function Vegeta() {
   const [character, setCharacter] = useState("Loading...");
@@ -34,13 +34,6 @@ export default function Vegeta() {
   // const speak = () => {
   //   Speech.speak(quote);
   // };
-
-  const shareQuote = (quote, character) => {
-    Share.share({
-      quote,
-      message: `"${quote}" --${character}`,
-    });
-  };
 
   return (
     <View className="flex-1 justify-center items-center #cbd5e1">
@@ -79,32 +72,13 @@ export default function Vegeta() {
             {loading ? "Loading..." : "New Quote"}
           </Text>
         </TouchableOpacity>
-        <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
-          <TouchableOpacity onPress={() => {}} style={styles.icons}>
-            <FontAwesome5 name="volume-up" size={22} color="#155E75" />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => {}} style={styles.icons}>
-            <FontAwesome5 name="copy" size={22} color="#155E75" />
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => shareQuote(quote, character)}
-            style={styles.icons}
-          >
-            <FontAwesome5 name="share" size={22} color="#155E75" />
-          </TouchableOpacity>
-        </View>
+        <Buttons />
       </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  icons: {
-    borderWidth: 2,
-    borderColor: "#155E75",
-    borderRadius: 50,
-    padding: 15,
-  },
   container: {
     width: "90%",
     backgroundColor: "#fff",
